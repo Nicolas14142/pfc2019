@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  dllmain.cpp
+  Particle.cpp
+  PSO_dll.cpp
+c:\users\nicolas.oliveira\documents\5ano\pfc\códigos em cpp\pso_dll\pso_dll\pso_dll.cpp(14): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+  Space.cpp
+  Gerando Código...
+  PSO_dll.vcxproj -> C:\Users\nicolas.oliveira\Documents\5ano\PFC\Códigos em cpp\PSO_dll\x64\Debug\PSO_dll.dll

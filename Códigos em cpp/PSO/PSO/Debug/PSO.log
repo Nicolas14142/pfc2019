@@ -1,0 +1,9 @@
+﻿  Space.cpp
+c:\users\nicolas.oliveira\documents\5ano\pfc\códigos em cpp\pso\pso\space.h(17): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\nicolas.oliveira\documents\5ano\pfc\códigos em cpp\pso\pso\space.cpp(160): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+  main.cpp
+c:\users\nicolas.oliveira\documents\5ano\pfc\códigos em cpp\pso\pso\space.h(17): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\nicolas.oliveira\documents\5ano\pfc\códigos em cpp\pso\pso\main.cpp(16): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\nicolas.oliveira\documents\5ano\pfc\códigos em cpp\pso\pso\main.cpp(19): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+  Gerando Código...
+  PSO.vcxproj -> C:\Users\nicolas.oliveira\Documents\5ano\PFC\Códigos em cpp\PSO\Debug\PSO.exe
