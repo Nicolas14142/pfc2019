@@ -1,14 +1,19 @@
 // ParticleSwarmOptimization.cpp : Define as funções exportadas para o aplicativo DLL.
 //
 
-#include "stdafx.h"
+#if !defined(unix) && !defined(__unix__) && !defined(__unix)
+	#include "stdafx.h"
+	#define DLLEXPORT __declspec(dllexport)
+#else
+	#define DLLEXPORT
+#endif
 #include "Particle.h"
 #include "Space.h"
 #include <cstdlib>
 #include <time.h>       /* time */
 //#include <stdio.h>      /* printf, scanf, puts, NULL */
 
-__declspec(dllexport) void ParticleSwarmOptimization(float dest_x, float dest_y, float target, int n_particles, float c1, float c2, float att, float rep, float W, double positions[24], double last_pbest[36], double vel[24], double debug[20]){
+DLLEXPORT void ParticleSwarmOptimization(float dest_x, float dest_y, float target, int n_particles, float c1, float c2, float att, float rep, float W, double positions[24], double last_pbest[36], double vel[24], double debug[20]){
 
 	using namespace std;
 	srand(time(NULL));

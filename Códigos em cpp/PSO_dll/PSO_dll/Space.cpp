@@ -1,11 +1,29 @@
-
-#include "stdafx.h"
+#if !defined(unix) && !defined(__unix__) && !defined(__unix)
+	#include "stdafx.h"
+#else
+	#include <cstdlib>
+	#include <cmath>
+#endif
 #include "Space.h"
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <iostream>
 #include <time.h>
 
+Space::Space() {
 
+}
+
+Space::Space(float target, float target_error, int n_particles) {
+
+	this->target = target;
+	this->target_error = target_error;
+	this->n_particles = n_particles;
+	this->gbest_position[0] = random()*range;
+	this->gbest_position[1] = random()*range;
+	this->dest[0] = -25;//random()*range;
+	this->dest[1] = -25;//random()*range;
+	this->gbest_value = 10000000;
+}
 
 void Space::set_target(double target) {
 
@@ -54,6 +72,9 @@ int Space::set_gbest() {
 			this->gbest_position[0] = this->particles[i].position[0];
 			this->gbest_position[1] = this->particles[i].position[1];
 			this->Pbest = i;
+#if defined(unix) || defined(__unix__) || defined(__unix)
+			entrei = 1 - entrei;
+#endif
 		}
 	}
 	return Pbest;
@@ -128,6 +149,14 @@ void Space::move_particles(int Pb) {
 		particles[i].move();
 	}
 }
+
+#if defined(unix) || defined(__unix__) || defined(__unix)
+void Space::move_dest() {
+	//velocidade do objetivo 2x maior q o da part?cula
+	this->dest[0] = dest[0] + velocity_max/3;
+	this->dest[1] = dest[1] + velocity_max/3;
+}
+#endif
 
 void Space::potential_field(Particle p, bool attractive, double speed_limit) {
 

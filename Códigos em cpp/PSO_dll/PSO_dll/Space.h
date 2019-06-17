@@ -1,4 +1,6 @@
-#pragma once
+#if !defined(unix) && !defined(__unix__) && !defined(__unix)
+	#pragma once
+#endif
 
 #ifndef __Space
 #define __Space
@@ -26,8 +28,10 @@ public:
 	//algoritmo
 	void PSO(double dest_x, double dest_y, int n_particles, double *last_pbest, double *positions, double c1, double c2, double att, double rep, double W);
 
+	Space();
+	Space(float, float, int);
 	void print_particles();
-	double fitness(Particle); // função fitness, depende do target(distancia até o dest)
+	double fitness(Particle); // funÃ§Ã£o fitness, depende do target(distancia atÃ© o dest)
 
 	void set_target(double);
 	void set_n_particles(int);
@@ -35,13 +39,18 @@ public:
 	void set_id();
 	void set_const(double, double, double, double, double); //seta os pesos do PSO
 
-	void set_pbest(); // calcula melhor posição da particula
-	int set_gbest(); //calcula melhor posição do grupo
+	void set_pbest(); // calcula melhor posiÃ§Ã£o da particula
+	int set_gbest(); //calcula melhor posiÃ§Ã£o do grupo
 
 	void move_particles(int);
-	double random(); //gerador de números aleatórios
+	double random(); //gerador de nÃºmeros aleatÃ³rios
 	void potential_field(Particle, bool, double); //campo potencial
 
+#if defined(unix) || defined(__unix__) || defined(__unix)
+	float target_error;
+	int entrei = 0;
+	void move_dest();
+#endif
 };
 
 

@@ -1,4 +1,6 @@
-#pragma once
+#if !defined(unix) && !defined(__unix__) && !defined(__unix)
+	#pragma once
+#endif
 #ifndef __Particle
 #define __Particle
 
@@ -12,7 +14,8 @@ public:
 	double velocity[2];
 	double range = 5;
 	int id;
-
+	
+	Particle ();
 	void set_position(double, double);
 	void str();
 	void move();
