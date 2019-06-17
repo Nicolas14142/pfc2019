@@ -9,18 +9,6 @@
 #include <iostream>
 #include <time.h>
 
-Particle::Particle() {
-#if defined(unix) || defined(__unix__) || defined(__unix)
-	position[0] = random();
-	position[1] = random();
-	pbest_position[0] = abs(random());
-	pbest_position[1] = abs(random());
-	pbest_value = 10000000;
-	velocity[0] = 0;
-	velocity[1] = 0;
-#endif
-}
-
 void Particle::set_position(double x, double y) {
 	position[0] = x;
 	position[1] = y;

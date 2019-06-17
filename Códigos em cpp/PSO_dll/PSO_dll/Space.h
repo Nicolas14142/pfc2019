@@ -28,8 +28,6 @@ public:
 	//algoritmo
 	void PSO(double dest_x, double dest_y, int n_particles, double *last_pbest, double *positions, double c1, double c2, double att, double rep, double W);
 
-	Space();
-	Space(float, float, int);
 	void print_particles();
 	double fitness(Particle); // função fitness, depende do target(distancia até o dest)
 
@@ -46,11 +44,6 @@ public:
 	double random(); //gerador de números aleatórios
 	void potential_field(Particle, bool, double); //campo potencial
 
-#if defined(unix) || defined(__unix__) || defined(__unix)
-	float target_error;
-	int entrei = 0;
-	void move_dest();
-#endif
 };
 
 
