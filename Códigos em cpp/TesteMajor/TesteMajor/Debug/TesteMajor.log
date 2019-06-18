@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\nicolas.oliveira\documents\5ano\pfc\testemajor\testemajor\main.cpp(13): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\nicolas.oliveira\documents\5ano\pfc\testemajor\testemajor\main.cpp(14): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\nicolas.oliveira\documents\5ano\pfc\testemajor\testemajor\main.cpp(29): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+c:\users\nicolas.oliveira\documents\5ano\pfc\testemajor\testemajor\main.cpp(102): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\nicolas.oliveira\documents\5ano\pfc\testemajor\testemajor\main.cpp(112): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+  TesteMajor.vcxproj -> C:\Users\nicolas.oliveira\Documents\5ano\PFC\TesteMajor\Debug\TesteMajor.exe
