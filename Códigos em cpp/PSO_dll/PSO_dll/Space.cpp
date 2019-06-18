@@ -101,10 +101,6 @@ void Space::PSO(double dest_x, double dest_y, int n_particles, double *last_pbes
 	//std::cout << i << "\n";//<<"\t"<<" "<<Pb<<" "<<search_space.entrei<<"\t"<< search_space.fitness(search_space.particles[Pb])<<" "<< search_space.gbest_value <<"\t"<< search_space.particles[Pb].position[0]<<" "<< search_space.gbest_position[0]<<"\n";
 }
 
-
-
-
-
 void Space::move_particles(int Pb) {
 	for (int i = 0; i < n_particles; i++) {
 
@@ -120,8 +116,12 @@ void Space::move_particles(int Pb) {
 		else {
 			double rand1 = abs(random());
 			double rand2 = abs(random());
-			this->new_velocity[0] = (W*particles[i].velocity[0]) + (c1*rand1)*(particles[i].pbest_position[0] - particles[i].position[0]) + (c2*rand2)*(this->gbest_position[0] - particles[i].position[0]);
-			this->new_velocity[1] = (W*particles[i].velocity[1]) + (c1*rand1)*(particles[i].pbest_position[1] - particles[i].position[1]) + (c2*rand2)*(this->gbest_position[1] - particles[i].position[1]);
+			this->new_velocity[0] = (W*particles[i].velocity[0]) 
+					+ (c1*rand1)*(particles[i].pbest_position[0] - particles[i].position[0]) 
+					+ (c2*rand2)*(this->gbest_position[0] - particles[i].position[0]);
+			this->new_velocity[1] = (W*particles[i].velocity[1]) 
+					+ (c1*rand1)*(particles[i].pbest_position[1] - particles[i].position[1]) 
+					+ (c2*rand2)*(this->gbest_position[1] - particles[i].position[1]);
 			potential_field(particles[i], false, velocity_max);
 		}
 		particles[i].velocity[0] = new_velocity[0];
@@ -147,7 +147,8 @@ void Space::potential_field(Particle p, bool attractive, double speed_limit) {
 	for (int i = 0; i < n_particles; i++) {
 
 		if (p.id != particles[i].id) {
-			mod = (particles[i].position[0] - p.position[0])*(particles[i].position[0] - p.position[0]) + (particles[i].position[1] - p.position[1])*(particles[i].position[1] - p.position[1]);
+			mod = (particles[i].position[0] - p.position[0]) * (particles[i].position[0] - p.position[0]) 
+						+ (particles[i].position[1] - p.position[1]) * (particles[i].position[1] - p.position[1]);
 			mod = sqrt(mod);
 			if (mod != 0) {
 				dir[0] = (particles[i].position[0] - p.position[0]) / mod;

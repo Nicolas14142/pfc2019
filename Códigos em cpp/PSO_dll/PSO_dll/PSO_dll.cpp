@@ -23,28 +23,18 @@ DLLEXPORT void ParticleSwarmOptimization(float dest_x, float dest_y, float targe
 	debug[0] = search_space.dest[0];
 	debug[1] = search_space.dest[1];
 	debug[2] = search_space.n_particles;
-	debug[3] = search_space.gbest_position[0];
-	debug[4] = search_space.gbest_position[1];
-	debug[5] = search_space.gbest_value;
 
-	//set last_pbest
 	for (int i = 0; i < search_space.n_particles; i++) {
-
+		//set last_pbest
 		search_space.particles[i].pbest_value = last_pbest[3 * i];
 		search_space.particles[i].pbest_position[0] = last_pbest[3 * i + 1];
 		search_space.particles[i].pbest_position[1] = last_pbest[3 * i + 2];
-	}
 
-	//set last_velocities
-	for (int i = 0; i < search_space.n_particles; i++) {
-
+		//set last_velocities
 		search_space.particles[i].velocity[0] = vel[2 * i];
 		search_space.particles[i].velocity[1] = vel[2 * i + 1];
-	}
 
-	//set positions
-	for (int i = 0; i < search_space.n_particles; i++) {
-
+		//set positions
 		search_space.particles[i].position[0] = positions[2 * i];
 		search_space.particles[i].position[1] = positions[2 * i + 1];
 	}
@@ -52,27 +42,23 @@ DLLEXPORT void ParticleSwarmOptimization(float dest_x, float dest_y, float targe
 	//execute the algorithm
 	search_space.PSO(dest_x, dest_y, n_particles, last_pbest, positions, c1, c2, att, rep, W);
 
+	debug[3] = search_space.gbest_value;
+	debug[4] = search_space.gbest_position[0];
+	debug[5] = search_space.gbest_position[1];
 	debug[6] = search_space.c1;
 	debug[7] = search_space.Pbest;
 
-	//return pbest
 	for (int i = 0; i < search_space.n_particles; i++) {
-
+		//return pbest
 		last_pbest[3 * i] = search_space.particles[i].pbest_value;
 		last_pbest[3 * i + 1] = search_space.particles[i].pbest_position[0];
 		last_pbest[3 * i + 2] = search_space.particles[i].pbest_position[1];
-	}
 
-	//return new positions
-	for (int i = 0; i < search_space.n_particles; i++) {
-
+		//return new positions
 		positions[2 * i] = search_space.particles[i].position[0];
 		positions[2 * i + 1] = search_space.particles[i].position[1];
-	}
 	
-	//return new velocities
-	for (int i = 0; i < search_space.n_particles; i++) {
-
+		//return new velocities
 		vel[2 * i] = search_space.particles[i].velocity[0];
 		vel[2 * i + 1] = search_space.particles[i].velocity[1];
 	}
