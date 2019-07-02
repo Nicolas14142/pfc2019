@@ -12,7 +12,6 @@
 
 double dest[2] = {0, 0};
 double positions[] = {1.0448, -2.62078, 3.92514, -1.71163, -2.63939, -1.51814, -4.96704, -0.834529, 2.07358, -2.72515, 2.54875, -0.731986, 0.872982, 3.13623, 1.20991, -3.54701, 3.92209, 3.27113, 3.13807, -2.32444};
-double infinity = std::numeric_limits<double>::infinity();
 double *lastBestPositions;
 double *velocities;
 double debug[20] = {0};
@@ -21,7 +20,7 @@ void write1(int, double*, double[2], int);
 void write(Space &search_space, int j);
 
 #define iterationMaxDistance 2000
-#define incrementStep 1
+#define incrementStep 0.1
 
 #define iterationIsNotOver ( (dest[0] > iterationMaxDistance) ? 0 : 1 )
 #define increment(x) (x[0]+=incrementStep, x[1]+=incrementStep)
@@ -38,23 +37,23 @@ int main() {
 
 	lastBestPositions = (double*) malloc(sizeof(double) * 3 * n_particles);
 	velocities = (double*) malloc(sizeof(double) * 2 * n_particles);
-	for (int j=0; j<36; j++) lastBestPositions[j] = 1000000;
-	for (int j=0; j<36; j++) std::cout << lastBestPositions[j] << " ";
+	for (int j=0; j<n_particles*3; j++) lastBestPositions[j] = std::numeric_limits<double>::infinity();
+	for (int j=0; j<n_particles*3; j++) std::cout << lastBestPositions[j] << " ";
 	std::cout << std::endl;
   
 	srand(time(NULL));
 
 	int i = 0;
 	while (iterationIsNotOver) { // for (i = 0; i < n_iterations; i++) {
-		std::cout << "i = " << i << std::endl;
+		std::cout << "i = " << i << "\t=>\tDest(" << dest[0] << ", " << dest[1] << ")" << std::endl;
 		ParticleSwarmOptimization(dest[0], dest[1], target, n_particles, c1, c2, att, rep, W, positions, lastBestPositions, velocities, debug);
 
 		std::cout << "Best Positions" << std::endl;
-		for (int j=0; j< 3 * n_particles; j++) std::cout << lastBestPositions[j] << " ";
+		for (int j=0; j<n_particles*3; j++) std::cout << lastBestPositions[j] << " ";
 		std::cout << std::endl;
 
 		std::cout << "Velocities: ";
-		for (int j=0; j< 2 * n_particles; j++) std::cout << velocities[j] << " ";
+		for (int j=0; j<n_particles*2; j++) std::cout << velocities[j] << " ";
 		std::cout << std::endl;
 
 		std::cout << "GBest: " << debug[3] << "\t" << debug[4] << "\t" << debug[5] << "\t" << std::endl;

@@ -8,6 +8,7 @@
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <iostream>
 #include <time.h>
+#include <limits>
 
 void Space::set_target(double target) {
 
@@ -46,7 +47,7 @@ void Space::set_pbest() {
 }
 
 int Space::set_gbest() {
-	gbest_value = 100000;
+	gbest_value = std::numeric_limits<double>::infinity();
 	//n necessita de memória pois atualiza sempre
 	for (int i = 0; i < n_particles; i++) {
 
