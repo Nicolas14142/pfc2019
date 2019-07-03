@@ -7,9 +7,10 @@
 #include <cstdlib>
 #include <time.h>       /* time */
 //#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <limits>
 #include "PSO_dll.h"
 
-DLLEXPORT void ParticleSwarmOptimization1(double positions[24], double vel[24], int n_particles) {
+DLLEXPORT void ParticleSwarmOptimization1(double positions[], double vel[], int n_particles) {
 	float target = 10;
 	float c1 = 0.1;
 	float c2 = 4;
@@ -18,7 +19,7 @@ DLLEXPORT void ParticleSwarmOptimization1(double positions[24], double vel[24], 
 	float W = 1;
 
 	double *lastBestPositions = (double*) malloc(sizeof(double) * 3 * n_particles);
-	double *velocities = (double*) malloc(sizeof(double) * 2 * n_particles);
+	// double *velocities = (double*) malloc(sizeof(double) * 2 * n_particles);
 	double debug[20] = {0};
 
 	for (int j=0; j< 3*n_particles; j++) {
@@ -36,7 +37,7 @@ DLLEXPORT void ParticleSwarmOptimization1(double positions[24], double vel[24], 
 			W,
 			&(positions[2]),
 			lastBestPositions,
-			velocities,
+			vel,
 			debug);
 }
 
@@ -102,11 +103,12 @@ DLLEXPORT void PsoTest() {
 }
 
 DLLEXPORT void PsoTest2(double positions[], int nrParticles ) {
-	std::cout << "Teste de chamada da biblioteca" << std::endl;
+	std::cout << "Teste de chamada da biblioteca 2" << std::endl;
 	std::cout << "\t Nr Particles: " << nrParticles << std::endl;
 	std::cout << "\t positions: [" << positions[0];
 	for (int i=1; i<nrParticles; i++){
 		std::cout << ", " << positions[i];
+		positions[i] += 100;
 	}
 	std::cout << "]" << std::endl;
 }
